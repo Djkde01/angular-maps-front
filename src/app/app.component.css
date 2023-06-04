@@ -1,0 +1,9 @@
+.map-container {
+  width: 60%;
+  height: 500px;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 12px 10px 0 rgba(0, 0, 0, 0.1);
+}
