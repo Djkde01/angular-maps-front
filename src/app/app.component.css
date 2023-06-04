@@ -1,3 +1,19 @@
+section {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.input-container {
+  background-color: white;
+  width: 58%;
+  border-radius: 0.5rem;
+  border: solid 2px #00000008;
+  box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 100px 80px rgba(0, 0, 0, 0.07);
+}
+.geocoder {
+  margin-bottom: 0.5rem;
+}
 .map-container {
   width: 60%;
   height: 500px;

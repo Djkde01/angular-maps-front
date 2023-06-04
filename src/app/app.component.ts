@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { MapCustomService } from './map-custom.service';
 
 @Component({
@@ -7,13 +13,22 @@ import { MapCustomService } from './map-custom.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private mapCustomService: MapCustomService) {}
+  @ViewChild('asGeoCoder') asGeoCoder!: ElementRef;
+
+  constructor(
+    private mapCustomService: MapCustomService,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.mapCustomService
       .buildMap()
-      .then((data) => {
-        console.log('Map built: ', data);
+      .then(({ map, geocoder }) => {
+        // Add geocoder to asGeoCoder
+        this.renderer.appendChild(
+          this.asGeoCoder.nativeElement,
+          geocoder.onAdd(map)
+        );
       })
       .catch((error) => {
         console.log('Error intializing map: ', error);

@@ -32,7 +32,13 @@ export class MapCustomService {
         // Add map controls
         this.map.addControl(new mapboxgl.NavigationControl());
 
-        resolve({ map: this.map });
+        // Add geocoder
+        const geocoder = new MapboxGeocoder({
+          accessToken: this.mapbox.accessToken,
+          mapboxgl,
+        });
+
+        resolve({ map: this.map, geocoder });
       } catch (error) {
         reject(error);
       }
