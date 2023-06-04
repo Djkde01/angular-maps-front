@@ -28,6 +28,10 @@ export class MapCustomService {
           zoom: this.zoom,
           center: [this.lng, this.lat],
         });
+
+        // Add map controls
+        this.map.addControl(new mapboxgl.NavigationControl());
+
         resolve({ map: this.map });
       } catch (error) {
         reject(error);
